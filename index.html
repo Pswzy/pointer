@@ -272,6 +272,7 @@
             },
             startPoint: function (type) {
                 console.log(type);
+                console.log(type, '111');
               if (this.state.start) {
                 clearInterval(this.pointTimer);
                 this.setState({
@@ -279,6 +280,7 @@
                   start: false,
                 })
               } else {
+                  console.log('master');
                 this.pointTimer = setInterval(function () {
                   if (type === 'name') {
                   var name = this.state.classStudents[this.state.index].name;
