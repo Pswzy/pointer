@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pointer</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+        }
+
+        #example {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-image: url('./background.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        .pointer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 50%;
+            /* width: 50%; */
+            margin: -25% 0 0 -25%;
+        }
+
+        .name {
+            margin: 20px;
+            font-size: 50px;
+        }
+
+        .group {
+            margin: 20px;
+            font-size: 50px;
+        }
+
+        button {
+            font-size: 36px;
+            line-height: 70px;
+            background-color: #00bcd457;
+            border-radius: 5px;
+            margin-right: 30px;
+            color: #FFEB3B;
+        }
+
+        span {
+            background-color: #03a9f43d;
+            display: inline-block;
+            vertical-align: bottom;
+            width: 200px;
+            line-height: 75px;
+            height: 75px;
+            padding-left: 20px;
+            color: #FFEB3B;
+        }
+
+        img {
+            height: 70px;
+            vertical-align: bottom;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        //  import names from '../name.json';
+          var Hello = React.createClass({
+            getInitialState: function () {
+              return {
+                opacity: 1.0,
+                studentName: '',
+                groupName: '',
+                btnName: '随机点名',
+                start: false,
+                index: 0,
+                groups: [
+                  {
+                     no: 1,
+                     name: '第一组'
+                  },
+                  {
+                     no: 2,
+                     name: '第二组'
+                  },
+                  {
+                     no: 3,
+                     name: '第三组'
+                  },
+                  {
+                     no: 4,
+                     name: '第四组'
+                  },
+                  {
+                     no: 5,
+                     name: '第五组'
+                  },
+                  {
+                     no: 6,
+                     name: '第六组'
+                  },
+                  {
+                     no: 7,
+                     name: '第七组'
+                  },
+                  {
+                     no: 8,
+                     name: '第八组'
+                  },
+                ],
+                classStudents: [
+                    { "name": "邓浩铭",
+                        "no": 1
+                    },
+                    { "name": "雷淑岚",
+                        "no": 2
+                    },
+                    { "name": "廖锦程",
+                        "no": 3
+                    },
+                    { "name": "江开强",
+                        "no": 4
+                    },
+                    { "name": "杜邵雄",
+                        "no": 5
+                    },
+                    { "name": "雷晶晶",
+                        "no": 6
+                    },
+                    { "name": "曾楚烽",
+                        "no": 7
+                    },
+                    { "name": "邹华坤",
+                        "no": 8
+                    },
+                    { "name": "黄幸怡",
+                        "no": 9
+                    },
+                    { "name": "李泳霖",
+                        "no": 10
+                    },
+                    { "name": "梁文浩",
+                        "no": 11
+                    },
+                    { "name": "劳靖岚",
+                        "no": 12
+                    },
+                    { "name": "郭子炫",
+                        "no": 13
+                    },
+                    { "name": "陈俊",
+                        "no": 14
+                    },
+                    { "name": "高鹏翔",
+                        "no": 15
+                    },
+                    { "name": "彭仪雯",
+                        "no": 16
+                    },
+                    { "name": "张志伟",
+                        "no": 17
+                    },
+                    { "name": "廖畅",
+                        "no": 18
+                    },
+                    { "name": "刘畅昊",
+                        "no": 19
+                    },
+                    { "name": "谢昌毅",
+                        "no": 20
+                    },
+                    { "name": "文志豪",
+                        "no": 21
+                    },
+                    { "name": "区健熙",
+                        "no": 22
+                    },
+                    { "name": "钟永兴",
+                        "no": 23
+                    },
+                    { "name": "周政宇",
+                        "no": 24
+                    },
+                    { "name": "林熙",
+                        "no": 25
+                    },
+                    { "name": "程钰玲",
+                        "no": 26
+                    },
+                    { "name": "黄静",
+                        "no": 27
+                    },
+                    { "name": "何婉锨",
+                        "no": 28
+                    },
+                    { "name": "刘梦梦",
+                        "no": 29
+                    },
+                    { "name": "黄永康",
+                        "no": 30
+                    },
+                    { "name": "李文添",
+                        "no": 31
+                    },
+                    { "name": "刘敏莉",
+                        "no": 32
+                    },
+                    { "name": "何玮欣",
+                        "no": 33
+                    },
+                    { "name": "甘子茵",
+                        "no": 34
+                    },
+                    { "name": "李芝蓉",
+                        "no": 35
+                    },
+                    { "name": "杨月盈",
+                        "no": 36
+                    },
+                    { "name": "周靖雯",
+                        "no": 37
+                    },
+                    { "name": "何梓慧",
+                        "no": 38
+                    },
+                    { "name": "陈志伟",
+                        "no": 39
+                    },
+                    { "name": "韦琦",
+                        "no": 40
+                    },
+                    { "name": "曾嘉颖",
+                        "no": 41
+                    },
+                    { "name": "于洪培",
+                        "no": 42
+                    },
+                    { "name": "邓方",
+                        "no": 43
+                    },
+                    { "name": "张涵清",
+                        "no": 44
+                    },
+                    { "name": "韩俊义",
+                        "no": 45
+                    },
+                    { "name": "钟永扬",
+                        "no": 46
+                    },
+                    { "name": "何展翔",
+                        "no": 47
+                    },
+                    { "name": "包振",
+                        "no": 48
+                    }
+                ]
+              };
+            },
+            startPoint: function (type) {
+              if (this.state.start) {
+                clearInterval(this.pointTimer);
+                this.setState({
+                  index: 0,
+                  start: false,
+                })
+              } else {
+                this.pointTimer = setInterval(function () {
+                  if (type === 'name') {
+                  var name = this.state.classStudents[this.state.index].name;
+                  var index = this.state.index;
+                  index = (index + 1)%(this.state.classStudents.length);
+                  this.setState({
+                      studentName: name,
+                      groupName: '',
+                      index: index,
+                      start: true,
+                    });
+                  } else if (type === 'group') {
+                  var name = this.state.groups[this.state.index].name;
+                  var index = this.state.index;
+                  index = (index + 1)%(this.state.groups.length);
+                  this.setState({
+                    studentName: '',
+                      groupName: name,
+                      index: index,
+                      start: true,
+                    });
+              }
+                }.bind(this), 100);
+              }
+              },
+    
+            render: function () {
+              return (
+                <div className="pointer">
+                  <div className="name">
+                      <button onClick={() => this.startPoint('name') }>点兵点将</button>
+                      <span>{this.state.studentName}</span>
+                      {
+                        this.state.studentName && !this.state.start && <img src="./year.png"/>
+                      }
+                  </div>
+                  <div className="group">
+                      <button onClick={() => this.startPoint('group') }>花落谁家</button>
+                      <span>{this.state.groupName}</span>
+                      {
+                        this.state.groupName && !this.state.start && <img src="./year.png"/>
+                      }
+                  </div>
+                </div>
+              );
+            }
+          });
+    
+          ReactDOM.render(
+            <Hello name="world"/>,
+            document.getElementById('example')
+          );
+        </script>
+    <script src="./build/react.js"></script>
+    <script src="./build/react-dom.js"></script>
+    <script src="./build/browser.min.js"></script>
+</body>
+
+</html>
